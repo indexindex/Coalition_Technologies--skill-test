@@ -1,0 +1,26 @@
+@use '../utilities' as *;
+
+.navigation-bar {
+    position: sticky;
+    top: 0;
+    padding: 1rem 1rem 1rem 0;
+    background-color: var(--color-white);
+    z-index: 5;
+
+    [alt="logo-big"] {
+        grid-column: 2 / 3;
+        transform: translateX(pxToRem(25px));
+
+        @include respond(phone) { transform: translateX(1rem); }
+    }
+
+    &__links {
+        grid-column: 3 / 4;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        column-gap: 3rem;
+
+        @include respond(phone) { column-gap: 1rem; }
+    }
+}

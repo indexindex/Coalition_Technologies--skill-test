@@ -1,0 +1,124 @@
+@use '../utilities' as *;
+
+.mountains {
+    background-color: var(--color-primary);
+
+    &__tabs {
+        grid-column: 2 / 4;
+        grid-row: 1 / 2;
+        display: flex;
+
+        &--tab {
+            font-family: 'Oswald', sans-serif;
+            font-size: pxToRem(20px);
+            color: var(--color-grey);
+            padding: pxToRem(10px) pxToRem(22px);
+            cursor: pointer;
+            transition: all .3s ease-in-out;
+
+            &.active-tab {
+                color: var(--color-primary);
+                text-decoration: underline;
+                text-underline-offset: 5px;
+                background-color: var(--color-grey);
+            }
+        }
+
+        @include respond(phone) { display: none; }
+    }
+
+    &__tab {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+
+        @include respond(phone) {
+            
+            &.tab-1 { grid-row: 1 / 2; }
+
+            &.tab-2 { grid-row: 2 / 3; }
+        }
+
+        h3:not(.schedule--title) {
+            display: none;
+
+            @include respond(phone) { display: flex; }
+        }
+
+        .tab-content {
+            grid-column: 1 / -1;
+            grid-row: 2 / 3;
+            justify-items: start;
+            align-items: start;
+            height: 100%;
+            max-height: 70vh; // ? fallback
+            max-height: 70dvh;
+            overflow: hidden;
+            opacity: 0;
+            z-index: 0;
+            transition: all .3s ease-in-out;
+
+            @include respond(phone) {
+                height: 0;
+                min-height: 0;
+            }
+    
+            &.active-tab-content {
+                opacity: 1;
+                z-index: 1;
+                
+                @include respond(phone) {
+                    min-height: 50vh; // ? fallback
+                    min-height: 50dvh;
+                }
+            }
+    
+            .schedule {
+                grid-column: 2 / 4;
+                grid-row: 1 / 2;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                padding: pxToRem(20px) pxToRem(40px);
+                margin: pxToRem(100px) 0 0 2rem;
+                background-color: rgba(var(--color-white-rgb), .7);
+                z-index: 1;
+
+                @include respond(phone) {
+                    align-self: center;
+                    margin: 0 auto;
+                }
+        
+                &--title {
+                    grid-column: 1 / -1;
+                    font-family: 'Oswald', sans-serif;
+                    font-size: 2rem;
+                    color: var(--color-primary);
+                    padding-bottom: .5rem;
+                }
+        
+                .dates {
+                    grid-column: 1 / 2;
+                    grid-row: 2 / 3;
+                }
+        
+                .events {
+                    grid-column: 2 / 3;
+                    grid-row: 2 / 3;
+                }
+            }
+        
+            [alt*="team-bg-tab"] {
+                grid-column: 1 / -1;
+                grid-row: 1 / 2;
+                @extend %coverImage;
+                object-position: bottom;
+                overflow: hidden;
+            }
+        
+            [alt*="team-bg-tab-2"] {
+                object-position: 0 27%;
+
+                @include respond(phone) { object-position: bottom; }
+            }
+        }
+    }
+}

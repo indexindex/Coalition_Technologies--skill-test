@@ -1,0 +1,18 @@
+@use '../utilities' as *;
+
+footer {
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--color-primary);
+
+    [alt="logo-footer"] { grid-column: 2 / 3; }
+
+    p {
+        grid-column: 3 / 4;
+        justify-self: end;
+        color: #63769d;
+    }
+
+    
+    @include respond(phone) { border-top: 1px solid var(--color-grey); }
+}

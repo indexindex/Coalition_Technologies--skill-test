@@ -1,0 +1,73 @@
+@use '../utilities' as *;
+
+html {
+    box-sizing: border-box;
+    font-size: var(--global-font-size);
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+
+    /* 
+        * Some users might use high-contrast theme to navigate websites, therefore without
+        * removing outline and instead setting it's color to "transparent", users can then
+        * see what element is focused.
+        * Once the theme has been changed, browser will change previously defined colors,
+        * transparent color is now changed to some other color but outline is still present.
+    */
+    outline-color: transparent;
+}
+
+
+body {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    color: var(--color-white);
+    margin: 0 auto;
+    background-color: var(--color-black);
+    transition: background-color .3s ease-in-out;
+
+    #root {
+        min-height: 100vh; // ? fallback
+        min-height: 100dvh;
+        margin-top: 75vh;
+
+        @include respond(phone) { margin-top: 50vh; }
+    }
+}
+
+/* 
+    * Some users might not want to see animations on page,
+    * media query provided for their preference.
+*/
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within { scroll-behavior: auto; }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {}
+
+// ? main GRID layout
+header,
+.navigation-bar,
+#history,
+#team,
+.mountains,
+.tab-content,
+footer {
+    display: grid;
+    grid-template-columns: 1fr repeat(2, minmax(min-content, pxToRem(480px))) 1fr;
+}

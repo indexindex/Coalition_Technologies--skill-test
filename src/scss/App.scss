@@ -1,0 +1,13 @@
+// ? [base] - for boilerplate code, standards
+// ? [layout] - for main parts of the site
+
+@use './base/base';
+@use './base/typography';
+
+@use './layout/header';
+@use './layout/navigation-bar';
+@use './layout/history';
+@use './layout/team';
+@use './layout/tabs-section';
+@use './layout/mountains';
+@use './layout/footer';

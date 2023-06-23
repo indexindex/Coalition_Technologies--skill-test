@@ -1,0 +1,28 @@
+@use '../utilities' as *;
+
+// .tabs-section {
+//     display: grid;
+//     grid-template-columns: 1fr repeat(2, minmax(min-content, pxToRem(480px))) 1fr;
+//     background-color: var(--color-primary);
+
+//     &__tabs {
+//         grid-column: 2 / 4;
+//         display: flex;
+
+//         &--tab {
+//             font-family: 'Oswald', sans-serif;
+//             font-size: pxToRem(20px);
+//             color: var(--color-grey);;
+//             padding: pxToRem(10px) pxToRem(22px);
+//             cursor: pointer;
+//             transition: all .3s ease-in-out;
+
+//             &.active-tab {
+//                 text-decoration: underline;
+//                 text-underline-offset: 5px;
+//                 color: var(--color-primary);
+//                 background-color: var(--color-grey);
+//             }
+//         }
+//     }
+// }
